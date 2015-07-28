@@ -6,10 +6,10 @@
   apt_repository: repo='deb http://packages.dotdeb.org {{ debian.version }} all' state=present
 
 - name: add dotdeb php55 repositories
-  apt_repository: repo='deb http://packages.dotdeb.org {{ debian.version }}-php55 all' state=present
+  apt_repository: repo='deb http://packages.dotdeb.org {{ debian.version }}-php{{ php.version }} all' state=present
 
 - name: add dotdeb php55 sources repositories
-  apt_repository: repo='deb-src http://packages.dotdeb.org {{ debian.version }}-php55 all' state=present
+  apt_repository: repo='deb-src http://packages.dotdeb.org {{ debian.version }}-php{{ php.version }} all' state=present
 
 - name: install php packages
   apt: pkg={{ item }} state=latest

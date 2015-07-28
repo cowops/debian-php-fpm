@@ -11,10 +11,12 @@ This role requires a debian compliant system such as ubuntu.
 Role Variables
 --------------
 
-debian:
-    version: wheezy
-php:
-    timezone: "Europe/Paris"
+- debian:
+  -  version: wheezy
+- php:
+  -  version: 56
+  -  timezone: "Europe/Paris"
+
 Dependencies
 ------------
 
@@ -25,7 +27,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: loranger.debian-php-fpm, debian.version: wheezy, php.timezone: "Europe/Paris" }
+         - { role: loranger.debian-php-fpm, debian.version: wheezy, php.version: 56, php.timezone: "Europe/Paris" }
 
 Tasks
 -----

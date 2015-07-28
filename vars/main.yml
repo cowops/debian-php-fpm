@@ -1,4 +1,5 @@
 debian:
     version: wheezy
 php:
+    version: 56
     timezone: "Europe/Paris"
