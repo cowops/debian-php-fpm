@@ -5,4 +5,4 @@ nginx:
 php:
     version: 7.0
     timezone: "Europe/Paris"
-    fastcgi_pass: "unix:/run/php/php7.0-fpm.sock"
+    fastcgi_pass: "/run/php/php7.0-fpm.sock"
