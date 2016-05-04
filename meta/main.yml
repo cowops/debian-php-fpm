@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: loranger
-  description: Install PHP-FPM for debian system
+  description: Install PHP 7 FPM for debian system
   license: BSD
   min_ansible_version: 1.2
   platforms:
@@ -11,7 +11,6 @@ galaxy_info:
   - name: Debian
     versions:
     - jessie
-    - squeeze
-    - wheezy
-  categories:
+  galaxy_tags:
   - web
+dependencies: []
