@@ -11,12 +11,27 @@
 - name: install php packages
   apt: pkg={{ item }} state=latest
   with_items:
-    - php7.0-cli
-    - php7.0-fpm
+    - php{{ php.version }}-cli
+    - php{{ php.version }}-fpm
 
 - name: copy php.ini
-  template: src=php.ini.j2 dest=/etc/php7/fpm/php.ini
+  template: src=php.ini.j2 dest=/etc/php/{{ php.version }}/fpm/php.ini
   notify: restart php
 
 - name: copy cli php.ini
-  template: src=php.cli.ini.j2 dest=/etc/php7/cli/php.ini
+  template: src=php.cli.ini.j2 dest=/etc/php/{{ php.version }}/cli/php.ini
+
+- name: adjust user
+  lineinfile: "dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp='^user =' line='user = {{ nginx.user }}'"
+
+- name: adjust group
+  lineinfile: "dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp='^group =' line='group = {{ nginx.user }}'"
+
+- name: adjust listen
+  lineinfile: "dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp='^listen =' line='listen = {{ php.fastcgi_pass }}'"
+
+- name: adjust listen owner
+  lineinfile: "dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp='^listen.owner = ' line='listen.owner = {{ nginx.user }}'"
+
+- name: adjust listen group
+  lineinfile: "dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp='^listen.group =' line='listen.group = {{ nginx.user }}'"

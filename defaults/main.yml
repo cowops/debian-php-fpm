@@ -1,5 +1,8 @@
 debian:
-    version: wheezy
+    version: jessie
+nginx:
+    user: www-data
 php:
-    version: 56
+    version: 7.0
     timezone: "Europe/Paris"
+    fastcgi_pass: "unix:/run/php/php7.0-fpm.sock"
