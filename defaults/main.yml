@@ -5,4 +5,6 @@ nginx:
 php:
     version: 7.0
     timezone: "Europe/Paris"
+    post_max_size: "8M"
+    upload_max_filesize: "2M"
     fastcgi_pass: "/run/php/php7.0-fpm.sock"
