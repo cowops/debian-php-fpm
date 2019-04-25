@@ -15,10 +15,13 @@
   apt_repository: repo='deb https://packages.sury.org/php/ {{ debian.version }} main' state=present
 
 - name: install php packages
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - php{{ php.version }}-cli
-    - php{{ php.version }}-fpm
+  apt:
+    name: {{ packages }}
+    state: latest
+  vars:
+    packages:
+      - php{{ php.version }}-cli
+      - php{{ php.version }}-fpm
 
 - name: copy php.ini
   template: src=php.ini.j2 dest=/etc/php/{{ php.version }}/fpm/php.ini
