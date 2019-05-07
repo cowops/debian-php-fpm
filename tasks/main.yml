@@ -16,7 +16,7 @@
 
 - name: install php packages
   apt:
-    name: {{ packages }}
+    name: "{{ packages }}"
     state: latest
   vars:
     packages:
