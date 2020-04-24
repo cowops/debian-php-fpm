@@ -2,9 +2,11 @@ debian:
     version: jessie
 nginx:
     user: www-data
+use_dotdeb: false
+use_sury: false
 php:
-    version: 7.0
+    version: 7.4
     timezone: "Europe/Paris"
     post_max_size: "8M"
     upload_max_filesize: "2M"
-    fastcgi_pass: "/run/php/php7.0-fpm.sock"
+    fastcgi_pass: "/run/php/php7.4-fpm.sock"

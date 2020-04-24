@@ -13,9 +13,15 @@ Role Variables
 
 - debian:
   -  version: wheezy
+- use_dotdeb: false
+- use_sury: false
 - php:
-  -  version: 56
+  -  version: 7.4
   -  timezone: "Europe/Paris"
+  - post_max_size: "8M"
+  - upload_max_filesize: "2M"
+  - fastcgi_pass: "/run/php/php7.4-fpm.sock"
+
 
 Dependencies
 ------------
@@ -27,7 +33,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: cowops.debian-php-fpm, debian.version: wheezy, php.version: 56, php.timezone: "Europe/Paris" }
+         - { role: cowops.debian-php-fpm, debian.version: buster, php.version: 7.4, php.timezone: "Europe/Paris" }
 
 Tasks
 -----
