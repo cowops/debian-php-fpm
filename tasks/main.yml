@@ -4,11 +4,11 @@
   when: use_dotdeb
 
 - name: add dotdeb default repositories
-  apt_repository: repo='deb http://packages.dotdeb.org {{ debian.version }} all' state=present
+  apt_repository: repo='deb http://packages.dotdeb.org {{ ansible_distribution_release }} all' state=present
   when: use_dotdeb
 
 - name: add dotdeb default sources repositories
-  apt_repository: repo='deb-src http://packages.dotdeb.org {{ debian.version }} all' state=present
+  apt_repository: repo='deb-src http://packages.dotdeb.org {{ ansible_distribution_release }} all' state=present
   when: use_dotdeb
 
 - name: register sury key
@@ -16,7 +16,7 @@
   when: use_sury
 
 - name: add sury default repositories
-  apt_repository: repo='deb https://packages.sury.org/php/ {{ debian.version }} main' state=present
+  apt_repository: repo='deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main' state=present
   when: use_sury
 
 - name: install php packages
